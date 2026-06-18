@@ -41,7 +41,20 @@ app.get("/api/health", (_request, response) => {
 app.get("/api/project", async (_request, response) => {
   const projectSnapshot: ProjectSnapshot = {
     files: await listProjectFiles(),
-    messageHistory,
+    messageHistory: messageHistory.map((m) => {
+      let content;
+      try {
+        content = JSON.parse(m.content);
+        content = content.message;
+      } catch (e) {
+        content = m.content;
+      }
+      return {
+        role: m.role,
+        content,
+        createdAt: m.createdAt,
+      };
+    }),
     previewUrl,
     updatedAt: new Date().toISOString(),
     summary: "Project loaded successfully",
@@ -83,7 +96,20 @@ app.post("/api/messages", async (request, response) => {
 
   const projectSnapshot: ProjectSnapshot = {
     files: await listProjectFiles(),
-    messageHistory,
+    messageHistory: messageHistory.map((m) => {
+      let content;
+      try {
+        content = JSON.parse(m.content);
+        content = content.message;
+      } catch (e) {
+        content = m.content;
+      }
+      return {
+        role: m.role,
+        content,
+        createdAt: m.createdAt,
+      };
+    }),
     previewUrl,
     updatedAt: new Date().toISOString(),
     summary: "Files updated successfully",
