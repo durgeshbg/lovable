@@ -1,0 +1,279 @@
+:root {
+  color: #1d1b16;
+  background: #f4f1e8;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-synthesis: none;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    linear-gradient(90deg, rgba(29, 27, 22, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(29, 27, 22, 0.06) 1px, transparent 1px),
+    #f4f1e8;
+  background-size: 28px 28px;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.topbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.topbar h1,
+.panel-heading h2,
+.history h2 {
+  margin: 0;
+}
+
+.topbar h1 {
+  font-size: clamp(32px, 6vw, 72px);
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #645f52;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.status-pill {
+  border: 1px solid #1d1b16;
+  background: #d7ff63;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(320px, 1fr) minmax(340px, 1.2fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.prompt-panel,
+.files-panel,
+.preview-panel {
+  min-height: calc(100vh - 150px);
+  border: 1px solid #1d1b16;
+  background: rgba(255, 252, 243, 0.94);
+  box-shadow: 6px 6px 0 #1d1b16;
+}
+
+.prompt-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 16px;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+textarea {
+  min-height: 190px;
+  resize: vertical;
+  border: 1px solid #1d1b16;
+  background: #fffdf7;
+  color: #1d1b16;
+  padding: 12px;
+  outline: none;
+}
+
+textarea:focus {
+  box-shadow: 0 0 0 3px #d7ff63;
+}
+
+form button {
+  border: 1px solid #1d1b16;
+  background: #1d1b16;
+  color: #f4f1e8;
+  min-height: 44px;
+  font-weight: 800;
+}
+
+form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.error-box {
+  border: 1px solid #9d1d2d;
+  background: #ffe9ed;
+  color: #721320;
+  padding: 12px;
+  font-size: 13px;
+}
+
+.history {
+  display: grid;
+  gap: 10px;
+  overflow: auto;
+}
+
+.history h2,
+.panel-heading h2 {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.message {
+  border-left: 4px solid #1d1b16;
+  background: #f4f1e8;
+  padding: 10px;
+}
+
+.message.model {
+  border-left-color: #3b69ff;
+}
+
+.message span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.message p,
+.muted {
+  margin: 0;
+  color: #645f52;
+  font-size: 13px;
+}
+
+.files-panel,
+.preview-panel {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  overflow: hidden;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #1d1b16;
+  padding: 14px;
+}
+
+.file-list {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  border-bottom: 1px solid #1d1b16;
+  padding: 10px;
+}
+
+.file-list button {
+  flex: 0 0 auto;
+  border: 1px solid #1d1b16;
+  background: #fffdf7;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.file-list button.active {
+  background: #d7ff63;
+}
+
+.code-view {
+  margin: 0;
+  min-height: 0;
+  overflow: auto;
+  background: #15140f;
+  color: #f4f1e8;
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.preview-panel iframe,
+.empty-preview {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  border: 0;
+  background: white;
+}
+
+.empty-preview {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: #645f52;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .prompt-panel,
+  .files-panel,
+  .preview-panel {
+    min-height: auto;
+  }
+
+  .preview-panel iframe,
+  .empty-preview {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 14px;
+  }
+
+  .topbar {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .status-pill {
+    white-space: normal;
+  }
+}

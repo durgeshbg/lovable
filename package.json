@@ -1,0 +1,21 @@
+{
+  "name": "lovable-style-builder-assignment",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "project",
+    "server"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:client": "npm --workspace client run dev",
+    "dev:project": "npm --workspace project run dev",
+    "dev:server": "npm --workspace server run dev",
+    "build": "npm --workspace server run build && npm --workspace client run build && npm --workspace project run build",
+    "reset:project": "node scripts/reset-project.mjs"
+  },
+  "dependencies": {
+    "@types/node": "^25.9.3"
+  }
+}
